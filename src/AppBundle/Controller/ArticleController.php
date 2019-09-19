@@ -12,9 +12,32 @@ use FOS\RestBundle\Controller\FOSRestController;
 class ArticleController extends FOSRestController
 {
     /**
+     * @Route("/articles", methods={"GET"}, name="get_articles")
+     */
+    public function getArticleList()
+    {
+        $articles = $this->getDoctrine()
+            ->getRepository(Article::class);
+
+        if (!$articles) {
+            throw $this->createNotFoundException(
+                'No article found for id '.$articleId
+            );
+        }
+
+        return $this->json([
+            'id' => $article->getId(),
+            'title' => $article->getTitle(),
+            'author' => $article->getAuthor(),
+            'posted_at' => $article->getPostedAt()->format(\DateTime::ATOM),
+            'updated_at' => $article->getUpdatedAt()->format(\DateTime::ATOM)
+        ]);
+    }
+
+    /**
      * @Route("/articles", methods={"POST"}, name="post_article")
      */
-    public function postAction(Request $request)
+    public function postArticle(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -35,7 +58,7 @@ class ArticleController extends FOSRestController
     /**
      * @Route("/articles/{articleId}", methods={"GET"}, name="get_article")
      */
-    public function getAction(int $articleId)
+    public function getArticle(int $articleId)
     {
         $article = $this->getDoctrine()
             ->getRepository(Article::class)
@@ -48,7 +71,7 @@ class ArticleController extends FOSRestController
         }
 
         return $this->json([
-            'id' => $articleId->getId(),
+            'id' => $article->getId(),
             'title' => $article->getTitle(),
             'author' => $article->getAuthor(),
             'posted_at' => $article->getPostedAt()->format(\DateTime::ATOM),
@@ -60,7 +83,7 @@ class ArticleController extends FOSRestController
     /**
      * @Route("/articles/{articleId}", methods={"PUT"}, name="update_article")
      */
-    public function updateAction(int $articleId, Request $request)
+    public function updateArticle(int $articleId, Request $request)
     {
         $article = $this->getDoctrine()
             ->getRepository(Article::class)
@@ -84,7 +107,7 @@ class ArticleController extends FOSRestController
     /**
      * @Route("/articles/{articleId}", methods={"DELETE"}, name="delete_article")
      */
-    public function deleteAction(int $articleId)
+    public function deleteArticle(int $articleId)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $article = $entityManager->getRepository(Article::class)->find($articleId);
