@@ -8,7 +8,6 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: blogdbpswd
       MYSQL_DATABASE: blogdb
       MYSQL_USER: blogdb
       MYSQL_PASSWORD: blogdb
