@@ -20,13 +20,5 @@ class DefaultController extends Controller
       return $this->render('default/index.html.twig', [
           'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
       ]);
-  }
-
-  // if you have multiple entity managers, use the registry to fetch them
-  public function editAction()
-  {
-      $doctrine = $this->getDoctrine();
-      $entityManager = $doctrine->getManager();
-      $otherEntityManager = $doctrine->getManager('other_connection');
-  }
+  } 
 }

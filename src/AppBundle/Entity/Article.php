@@ -33,6 +33,11 @@ class Article
   private $postedAt;
 
   /**
+   * @ORM\Column(type="datetime", name="updated_at")
+   */
+  private $updatedAt;
+
+  /**
    * @ORM\Column(type="text")
    */
   private $body;
@@ -75,6 +80,16 @@ class Article
   public function setPostedAt($postedAt)
   {
     return $this->postedAt = $postedAt;
+  }
+
+  public function getUpdatedAt()
+  {
+    return $this->postedAt;
+  }
+
+  public function setUpdatedAt($updatedAt)
+  {
+    return $this->updatedAt = $updatedAt;
   }
 
   public function getBody()
