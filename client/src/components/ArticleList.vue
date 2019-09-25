@@ -1,5 +1,6 @@
 <template>
-    <ul class="article--list">
+    <div class="list">
+        <ArticleHeader />
         <ArticleItem
             v-for="item in items"
             :author="item.author"
@@ -9,16 +10,18 @@
             :title="item.title"
             :updatedAt="item.updatedAt"
         />
-    </ul>
+    </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import ArticleItem from './ArticleItem.vue'
+import ArticleListHeader from './ArticleListHeader.vue'
+import ArticleListItem from './ArticleListItem.vue'
 
 const ArticleList = Vue.extend({
     components: {
-        ArticleItem
+        ArticleListHeader,
+        ArticleListItem
     },
     data: () => ({
         items: [
@@ -42,3 +45,11 @@ const ArticleList = Vue.extend({
 
 export default ArticleList
 </script>
+
+<style scoped>
+.list {
+    border: black 1px solid;
+    margin: 0;
+    padding: 0;
+}
+</style>

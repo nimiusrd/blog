@@ -6,7 +6,8 @@
     "build": "webpack",
     "build:production": "webpack -p",
     "lint": "vue-cli-service lint",
-    "test": "jest"
+    "test": "jest",
+    "watch": "webpack -w"
   },
   "dependencies": {
     "vue": "^2.6.10"
