@@ -1,7 +1,7 @@
 <template>
     <div class="list">
-        <ArticleHeader />
-        <ArticleItem
+        <ArticleListHeader />
+        <ArticleListItem
             v-for="item in items"
             :author="item.author"
             :id="item.id"
@@ -38,7 +38,7 @@ const ArticleList = Vue.extend({
                 postedAt: '2019-09-19T13:18:32.000Z',
                 title: 'title2',
                 updatedAt: '2019-09-19T13:18:32.000Z'
-            },
+            }
         ]
     })
 })
