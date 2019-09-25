@@ -1,18 +1,13 @@
 <template>
     <div id="app">
-        <ArticleList />
+        <router-view />
     </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import ArticleList from './components/ArticleList.vue'
 
-const App = Vue.extend({
-    components: {
-        ArticleList
-    }
-})
+const App = Vue.extend({})
 
 export default App
 </script>
