@@ -21,7 +21,7 @@ class Article
    * @ORM\Column(type="string", length=100)
    */
   private $title;
-  
+
   /**
    * @ORM\Column(type="string", length=100)
    */
@@ -40,7 +40,7 @@ class Article
   /**
    * @ORM\Column(type="text")
    */
-  private $body;
+  private $content;
 
   public function getId()
   {
@@ -92,13 +92,13 @@ class Article
     return $this->updatedAt = $updatedAt;
   }
 
-  public function getBody()
+  public function getContent()
   {
-    return $this->body;
+    return $this->content;
   }
 
-  public function setBody($body)
+  public function setContent($content)
   {
-    return $this->body = $body;
+    return $this->content = $content;
   }
 }

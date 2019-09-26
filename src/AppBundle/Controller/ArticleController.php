@@ -9,10 +9,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\FOSRestController;
 
+use Psr\Log\LoggerInterface;
+
 class ArticleController extends FOSRestController
 {
     /**
-     * @Route("/articles", methods={"GET"}, name="get_articles")
+     * @Route("/api/articles", methods={"GET"}, name="get_articles")
      */
     public function getArticleList()
     {
@@ -35,28 +37,30 @@ class ArticleController extends FOSRestController
     }
 
     /**
-     * @Route("/articles", methods={"POST"}, name="post_article")
+     * @Route("/api/articles", methods={"POST"}, name="post_article")
      */
     public function postArticle(Request $request)
     {
+        $data = json_decode($request->getContent());
+
         $entityManager = $this->getDoctrine()->getManager();
 
         $article = new Article();
-        $article->setTitle($request->request->title);
-        $article->setAuthor($request->request->author);
+        $article->setTitle($data->title);
+        $article->setAuthor($data->author);
         $date = new \DateTime();
         $article->setPostedAt($date);
         $article->setUpdatedAt($date);
-        $article->setBody($request->request->body);
+        $article->setContent($data->content);
 
         $entityManager->persist($article);
         $entityManager->flush();
 
-        return new Response('Saved new article with id '.$article->get());
+        return new Response('Saved new article with id '.$article->getId());
     }
 
     /**
-     * @Route("/articles/{articleId}", methods={"GET"}, name="get_article")
+     * @Route("/api/articles/{articleId}", methods={"GET"}, name="get_article")
      */
     public function getArticle(int $articleId)
     {
@@ -76,36 +80,39 @@ class ArticleController extends FOSRestController
             'author' => $article->getAuthor(),
             'posted_at' => $article->getPostedAt()->format(\DateTime::ATOM),
             'updated_at' => $article->getUpdatedAt()->format(\DateTime::ATOM),
-            'body' => $article->getBody()
+            'content' => $article->getContent()
         ]);
     }
 
     /**
-     * @Route("/articles/{articleId}", methods={"PUT"}, name="update_article")
+     * @Route("/api/articles/{articleId}", methods={"PUT"}, name="update_article")
      */
     public function updateArticle(int $articleId, Request $request)
     {
-        $article = $this->getDoctrine()
-            ->getRepository(Article::class)
-            ->find($articleId);
+        $entityManager = $this->getDoctrine()->getManager();
+        $article = $entityManager->getRepository(Article::class)->find($articleId);
+
         if (!$article) {
             throw $this->createNotFoundException(
                 'No article found for id '.$id
             );
         }
 
-        $article->setTitle($request->request->title);
-        $article->setAuthor($request->request->author);
+        $data = json_decode($request->getContent());
+
+        $article->setTitle($data->title);
+        $article->setAuthor($data->author);
         $date = new \DateTime();
         $article->setUpdatedAt($date);
-        $article->setBody($request->request->body);
+        $article->setContent($data->content);
 
         $entityManager->flush();
-        return new Response('Updated article with id '.$article->get());
+
+        return new Response('Updated article with id '.$article->getId());
     }
 
     /**
-     * @Route("/articles/{articleId}", methods={"DELETE"}, name="delete_article")
+     * @Route("/api/articles/{articleId}", methods={"DELETE"}, name="delete_article")
      */
     public function deleteArticle(int $articleId)
     {
