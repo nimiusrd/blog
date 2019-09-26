@@ -3,15 +3,28 @@
         <label for="title">
             Title:
         </label>
-        <input type="text" name="title" v-model="title">
+        <input
+            name="title"
+            type="text"
+            v-model="title"
+        >
         <label for="author">
             Author:
         </label>
-        <input type="text" name="author" v-model="author">
-        <button :disabled="!sendable">
+        <input
+            name="author"
+            type="text"
+            v-model="author"
+        >
+        <button
+            @click.prevent="handleClickSend"
+            :disabled="!sendable"
+        >
             {{ sendText }}
         </button>
-        <button>
+        <button
+            @click.prevent="handleClickCancel"
+        >
             Cancel
         </button>
         <VueEditor v-model="content" :disabled="!sendable" />
@@ -42,15 +55,18 @@ const ArticleEditor = Vue.extend({
         title: ''
     }),
     methods: {
-        getArticle: function () {
-            if (this.isNew) {
+        getArticle() {
+            const vm = this
+
+            if (vm.isNew) {
+                vm.sendable = true
+
                 return
             }
-            this.author = 'Loading ...'
-            this.content = '<h1>Loading ...</h1>'
-            this.title = 'Loading ...'
+            vm.author = 'Loading ...'
+            vm.content = '<h1>Loading ...</h1>'
+            vm.title = 'Loading ...'
             const id = this.$route.params.id
-            const vm = this
 
             fetch(`/api/articles/${id}`)
                 .then(res => res.json())
@@ -64,6 +80,61 @@ const ArticleEditor = Vue.extend({
                     vm.author = 'Error'
                     vm.content = '<h1 style="color: red;">Error</h1>'
                     vm.title = 'Error'
+                })
+        },
+        handleClickCancel() {
+            if (this.isNew) {
+
+            }
+        },
+        handleClickSend() {
+            if (this.isNew) {
+                this.postArticle()
+            } else {
+                this.updateArticle()
+            }
+        },
+        postArticle() {
+            const body = {
+                author: this.author,
+                content: this.content,
+                title: this.title
+            }
+
+            fetch(
+                `/api/articles`,
+                {
+                    body: JSON.stringify(body),
+                    method: 'POST'
+                }
+            )
+                .then(res => {
+                    console.log(res.status)
+                })
+                .catch(reason => {
+                    console.log(reason)
+                })
+        },
+        updateArticle() {
+            const id = this.$route.params.id
+            const body = {
+                author: this.author,
+                content: this.content,
+                title: this.title
+            }
+
+            fetch(
+                `/api/articles/${id}`,
+                {
+                    body: JSON.stringify(body),
+                    method: 'PUT'
+                }
+            )
+                .then(res => {
+                    connsole.log(res.status)
+                })
+                .catch(reason => {
+                    console.log(reason)
                 })
         }
     },
