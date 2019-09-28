@@ -1,6 +1,6 @@
 <template>
-    <button @click="handleClickAdd">
-        Add new Article
+    <button class="add-button" @click="handleClickAdd">
+        Add new article
     </button>
 </template>
 
@@ -21,5 +21,10 @@ export default ArticleAddButton
 </script>
 
 <style scoped>
-
+.add-button {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 8px;
+    padding: 16px;
+}
 </style>

@@ -31,6 +31,7 @@ export default ArticleListHeader
     grid-template:
         "title author posted-at updated-at"
         / 3fr 1fr 1fr 1fr;
+    text-align: center;
 }
 
 .title {

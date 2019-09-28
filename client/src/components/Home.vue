@@ -1,7 +1,7 @@
 <template>
     <div class="home">
-        <ArticleList />
         <ArticleAddButton />
+        <ArticleList />
     </div>
 </template>
 
@@ -21,5 +21,10 @@ export default Home
 </script>
 
 <style scoped>
-
+.home {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 </style>

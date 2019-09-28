@@ -66,5 +66,6 @@ export default ArticleList
     border: black 1px solid;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 </style>
