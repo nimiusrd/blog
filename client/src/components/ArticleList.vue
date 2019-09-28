@@ -10,6 +10,9 @@
             :title="item.title"
             :updatedAt="item.updatedAt"
         />
+        <button @click="handleClickAdd">
+            Add new Article
+        </button>
     </div>
 </template>
 
@@ -19,28 +22,43 @@ import ArticleListHeader from './ArticleListHeader.vue'
 import ArticleListItem from './ArticleListItem.vue'
 
 const ArticleList = Vue.extend({
+    created() {
+        this.getArticles()
+    },
     components: {
         ArticleListHeader,
         ArticleListItem
     },
-    data: () => ({
-        items: [
-            {
-                author: 'author1',
-                id: 1,
-                postedAt: '2019-09-19T13:18:32.000Z',
-                title: 'title1',
-                updatedAt: '2019-09-19T13:18:32.000Z'
-            },
-            {
-                author: 'author2',
-                id: 2,
-                postedAt: '2019-09-19T13:18:32.000Z',
-                title: 'title2',
-                updatedAt: '2019-09-19T13:18:32.000Z'
-            }
-        ]
-    })
+    data() {
+        return {
+            items: []
+        }
+    },
+    methods: {
+        getArticles() {
+            const vm = this
+
+            fetch(
+                '/api/articles',
+                {
+                    method: 'GET'
+                }
+            )
+                .then(res => res.json())
+                .then(json => {
+                    console.log(json)
+                    vm.items = json
+                })
+                .catch(reason => {
+                    console.log(reason)
+                })
+        },
+        handleClickAdd() {
+            this.$router.push({
+                path: '/articles'
+            })
+        }
+    }
 })
 
 export default ArticleList

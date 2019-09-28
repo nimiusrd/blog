@@ -23,9 +23,9 @@
             {{ sendText }}
         </button>
         <button
-            @click.prevent="handleClickCancel"
+            @click.prevent="handleClickBack"
         >
-            Cancel
+            Back
         </button>
         <VueEditor v-model="content" :disabled="!sendable" />
     </div>
@@ -82,10 +82,8 @@ const ArticleEditor = Vue.extend({
                     vm.title = 'Error'
                 })
         },
-        handleClickCancel() {
-            if (this.isNew) {
-
-            }
+        handleClickBack() {
+            this.$router.go(-1)
         },
         handleClickSend() {
             if (this.isNew) {
@@ -93,6 +91,7 @@ const ArticleEditor = Vue.extend({
             } else {
                 this.updateArticle()
             }
+            this.$router.go(-1)
         },
         postArticle() {
             const body = {
@@ -108,9 +107,6 @@ const ArticleEditor = Vue.extend({
                     method: 'POST'
                 }
             )
-                .then(res => {
-                    console.log(res.status)
-                })
                 .catch(reason => {
                     console.log(reason)
                 })
@@ -130,9 +126,6 @@ const ArticleEditor = Vue.extend({
                     method: 'PUT'
                 }
             )
-                .then(res => {
-                    connsole.log(res.status)
-                })
                 .catch(reason => {
                     console.log(reason)
                 })

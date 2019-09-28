@@ -1,5 +1,5 @@
 <template>
-    <li class="item">
+    <li class="item" @click="handleClick">
         <div class="title">
             {{ title }}
         </div>
@@ -33,6 +33,13 @@ const ArticleListItem = Vue.extend({
         formattedUpdatedAt: function() {
             return new Date(this.updatedAt).toDateString()
         },
+    },
+    methods: {
+        handleClick() {
+            this.$router.push({
+                path: `/articles/${this.id}`
+            })
+        }
     }
 })
 
