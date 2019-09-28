@@ -76,8 +76,8 @@ const ArticleViewer = Vue.extend({
                 .then(json => {
                     vm.author = json.author
                     vm.content = json.content
-                    vm.postedAt = new Date(json['posted_at']).toString()
-                    vm.updatedAt = new Date(json['updated_at']).toString()
+                    vm.postedAt = new Date(json['postedAt']).toString()
+                    vm.updatedAt = new Date(json['updatedAt']).toString()
                     vm.title = json.title
                 })
                 .catch(reason => {
