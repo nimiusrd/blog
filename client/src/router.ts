@@ -1,12 +1,12 @@
 import VueRouter from 'vue-router'
-import ArticleList from './components/ArticleList.vue'
+import Home from './components/Home.vue'
 import ArticleViewer from './components/ArticleViewer.vue'
 import ArticleEditor from './components/ArticleEditor.vue'
 
 const routes = [
     {
         path: '/',
-        component: ArticleList
+        component: Home
     },
     {
         path: '/articles/:id',

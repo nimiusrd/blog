@@ -10,9 +10,6 @@
             :title="item.title"
             :updatedAt="item.updatedAt"
         />
-        <button @click="handleClickAdd">
-            Add new Article
-        </button>
     </div>
 </template>
 
