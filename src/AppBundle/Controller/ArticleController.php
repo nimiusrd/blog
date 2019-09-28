@@ -11,29 +11,30 @@ use FOS\RestBundle\Controller\FOSRestController;
 
 use Psr\Log\LoggerInterface;
 
+
 class ArticleController extends FOSRestController
 {
     /**
      * @Route("/api/articles", methods={"GET"}, name="get_articles")
      */
-    public function getArticleList()
+    public function getArticleList(LoggerInterface $logger)
     {
-        $articles = $this->getDoctrine()
-            ->getRepository(Article::class);
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
 
         if (!$articles) {
-            throw $this->createNotFoundException(
-                'No article found for id '.$articleId
-            );
+            return $this->json([]);
         }
+        $toJSON = function ($article) {
+            return [
+                'id' => $article->getId(),
+                'title' => $article->getTitle(),
+                'author' => $article->getAuthor(),
+                'postedAt' => $article->getPostedAt()->format(\DateTime::ATOM),
+                'updatedAt' => $article->getUpdatedAt()->format(\DateTime::ATOM)
+            ];
+        };
 
-        return $this->json([
-            'id' => $article->getId(),
-            'title' => $article->getTitle(),
-            'author' => $article->getAuthor(),
-            'posted_at' => $article->getPostedAt()->format(\DateTime::ATOM),
-            'updated_at' => $article->getUpdatedAt()->format(\DateTime::ATOM)
-        ]);
+        return $this->json(array_map($toJSON, $articles));
     }
 
     /**
@@ -78,8 +79,8 @@ class ArticleController extends FOSRestController
             'id' => $article->getId(),
             'title' => $article->getTitle(),
             'author' => $article->getAuthor(),
-            'posted_at' => $article->getPostedAt()->format(\DateTime::ATOM),
-            'updated_at' => $article->getUpdatedAt()->format(\DateTime::ATOM),
+            'postedAt' => $article->getPostedAt()->format(\DateTime::ATOM),
+            'updatedAt' => $article->getUpdatedAt()->format(\DateTime::ATOM),
             'content' => $article->getContent()
         ]);
     }
