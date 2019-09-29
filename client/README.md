@@ -1,6 +1,4 @@
-# 🚀 Welcome to your new awesome project!
-
-This project has been created using **webpack scaffold**, you can now run
+# Build for development
 
 ```
 npm run build
@@ -12,4 +10,25 @@ or
 yarn build
 ```
 
-to bundle your application
+# Build for production
+```
+npm run build:production
+```
+
+or
+
+```
+yarn build:production
+```
+
+# Watch
+```
+npm run watch
+```
+
+or
+
+```
+yarn watch
+```
+
