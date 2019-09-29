@@ -42,5 +42,10 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.js'],
+    },
+    externals: {
+        vue: 'Vue',
+        'vue-router': 'VueRouter',
+        'vue2-editor': 'Vue2Editor'
     }
 };
