@@ -14,17 +14,17 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import ArticleListHeader from './ArticleListHeader.vue'
 import ArticleListItem from './ArticleListItem.vue'
+import Vue from 'vue'
 
 const ArticleList = Vue.extend({
-    created() {
-        this.getArticles()
-    },
     components: {
         ArticleListHeader,
         ArticleListItem
+    },
+    created() {
+        this.getArticles()
     },
     data() {
         return {

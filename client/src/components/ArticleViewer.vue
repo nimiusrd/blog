@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import ArticleViewerArticle from './ArticleViewerArticle.vue'
 import ArticleViewerNavigation from './ArticleViewerNavigation.vue'
+import Vue from 'vue'
 
 const ArticleViewer = Vue.extend({
     components: {

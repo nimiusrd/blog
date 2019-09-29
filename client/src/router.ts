@@ -1,27 +1,27 @@
-import VueRouter from 'vue-router'
-import Home from './components/Home.vue'
-import ArticleViewer from './components/ArticleViewer.vue'
 import ArticleEditor from './components/ArticleEditor.vue'
+import ArticleViewer from './components/ArticleViewer.vue'
+import Home from './components/Home.vue'
+import VueRouter from 'vue-router'
 
 const routes = [
     {
-        path: '/',
-        component: Home
+        component: Home,
+        path: '/'
     },
     {
-        path: '/articles/:id',
-        component: ArticleViewer
+        component: ArticleViewer,
+        path: '/articles/:id'
     },
     {
-        path: '/articles/:id/edit',
         component: ArticleEditor,
+        path: '/articles/:id/edit',
         props: {
             isNew: false
         }
     },
     {
-        path: '/articles',
         component: ArticleEditor,
+        path: '/articles',
         props: {
             isNew: true
         }

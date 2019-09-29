@@ -15,24 +15,17 @@
     </li>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 
 const ArticleListItem = Vue.extend({
-    props: {
-        id: Number,
-        title: String,
-        author: String,
-        postedAt: String,
-        updatedAt: String
-    },
     computed: {
         formattedPostedAt: function() {
             return new Date(this.postedAt).toDateString()
         },
         formattedUpdatedAt: function() {
             return new Date(this.updatedAt).toDateString()
-        },
+        }
     },
     methods: {
         handleClick() {
@@ -40,6 +33,13 @@ const ArticleListItem = Vue.extend({
                 path: `/articles/${this.id}`
             })
         }
+    },
+    props: {
+        author: String,
+        id: Number,
+        postedAt: String,
+        title: String,
+        updatedAt: String
     }
 })
 

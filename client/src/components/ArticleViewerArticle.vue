@@ -28,8 +28,8 @@ const ArticleViewerArticle = Vue.extend({
             author: '',
             content: '',
             postedAt: '',
-            updatedAt: '',
-            title: ''
+            title: '',
+            updatedAt: ''
         }
     },
     methods: {

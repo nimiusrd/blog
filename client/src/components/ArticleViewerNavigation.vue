@@ -18,7 +18,6 @@ import Vue from 'vue'
 const ArticleViewerNavigation = Vue.extend({
     methods: {
         deleteArticle() {
-            const vm = this
             const id = this.$route.params.id
 
             fetch(
@@ -34,7 +33,7 @@ const ArticleViewerNavigation = Vue.extend({
         handleClickDelete() {
             this.deleteArticle()
             this.$router.push({
-                path: `/`
+                path: '/'
             })
         },
         handleClickEdit() {
@@ -46,7 +45,7 @@ const ArticleViewerNavigation = Vue.extend({
         },
         handleClickHome() {
             this.$router.push({
-                path: `/`
+                path: '/'
             })
         }
     }

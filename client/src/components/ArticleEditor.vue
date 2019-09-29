@@ -45,13 +45,10 @@
 
 <script>
 import Vue from 'vue'
-import { VueEditor } from "vue2-editor"
+import {VueEditor} from 'vue2-editor'
 import fetch from 'node-fetch'
 
 const ArticleEditor = Vue.extend({
-    created: function () {
-        this.getArticle()
-    },
     components: {
         VueEditor
     },
@@ -59,6 +56,9 @@ const ArticleEditor = Vue.extend({
         sendText: function () {
             return this.isNew ? 'Post' : 'Save'
         }
+    },
+    created: function () {
+        this.getArticle()
     },
     data: () => ({
         author: '',
@@ -116,7 +116,7 @@ const ArticleEditor = Vue.extend({
             }
 
             fetch(
-                `/api/articles`,
+                '/api/articles',
                 {
                     body: JSON.stringify(body),
                     method: 'POST'

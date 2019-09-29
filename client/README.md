@@ -32,3 +32,24 @@ or
 yarn watch
 ```
 
+# Test
+```
+npm run test
+```
+
+or
+
+```
+yarn test
+```
+
+# Lint
+```
+npm run lint
+```
+
+or
+
+```
+yarn lint
+```
