@@ -1,19 +1,19 @@
 <template>
     <div class="home">
-        <ArticleAddButton />
+        <HomeNavigation />
         <ArticleList />
     </div>
 </template>
 
 <script>
-import ArticleAddButton from './ArticleAddButton.vue'
 import ArticleList from './ArticleList.vue'
+import HomeNavigation from './HomeNavigation.vue'
 import Vue from 'vue'
 
 const Home = Vue.extend({
     components: {
-        ArticleAddButton,
-        ArticleList
+        ArticleList,
+        HomeNavigation
     }
 })
 
@@ -21,10 +21,4 @@ export default Home
 </script>
 
 <style scoped>
-.home {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 </style>

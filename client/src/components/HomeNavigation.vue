@@ -1,7 +1,9 @@
 <template>
-    <button class="add-button" @click="handleClickAdd">
-        Add new article
-    </button>
+    <div class="navigation">
+        <button class="add button" @click="handleClickAdd">
+            Add new article
+        </button>
+    </div>
 </template>
 
 <script>
@@ -21,11 +23,16 @@ export default ArticleAddButton
 </script>
 
 <style scoped>
-.add-button {
+.button {
     font-size: 20px;
     font-weight: 500;
     margin: 8px;
     min-width: 100px;
     padding: 16px;
+}
+.navigation {
+    align-items: center;
+    justify-content: left;
+    display: flex;
 }
 </style>
