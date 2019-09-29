@@ -25,6 +25,7 @@ export default ArticleAddButton
     font-size: 20px;
     font-weight: 500;
     margin: 8px;
+    min-width: 100px;
     padding: 16px;
 }
 </style>

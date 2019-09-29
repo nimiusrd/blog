@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import ArticleList from './ArticleList.vue'
 import ArticleAddButton from './ArticleAddButton.vue'
+import ArticleList from './ArticleList.vue'
+import Vue from 'vue'
 
 const Home = Vue.extend({
     components: {
-        ArticleList,
-        ArticleAddButton
+        ArticleAddButton,
+        ArticleList
     }
 })
 

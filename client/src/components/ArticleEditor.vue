@@ -1,33 +1,45 @@
 <template>
     <div class="editor">
-        <label for="title">
-            Title:
-        </label>
-        <input
-            name="title"
-            type="text"
-            v-model="title"
-        >
-        <label for="author">
-            Author:
-        </label>
-        <input
-            name="author"
-            type="text"
-            v-model="author"
-        >
-        <button
-            @click.prevent="handleClickSend"
-            :disabled="!sendable"
-        >
-            {{ sendText }}
-        </button>
-        <button
-            @click.prevent="handleClickBack"
-        >
-            Back
-        </button>
-        <VueEditor v-model="content" :disabled="!sendable" />
+        <div class="navigation">
+            <button
+                @click.prevent="handleClickSend"
+                class="button send"
+                :disabled="!sendable"
+            >
+                {{ sendText }}
+            </button>
+            <button
+                @click.prevent="handleClickBack"
+                class="button back"
+            >
+                Back
+            </button>
+        </div>
+        <div class="author">
+            <label class="label" for="author">
+                Author:
+            </label>
+            <input
+                autocomplete="off"
+                class="text-input"
+                name="author"
+                type="text"
+                v-model="author"
+            >
+        </div>
+        <div class="title">
+            <label class="label" for="title">
+                Title:
+            </label>
+            <input
+                autocomplete="off"
+                class="text-input"
+                name="title"
+                type="text"
+                v-model="title"
+            >
+        </div>
+        <VueEditor v-model="content" :disabled="!sendable" :editorOptions="editorOptions" />
     </div>
 </template>
 
@@ -51,6 +63,9 @@ const ArticleEditor = Vue.extend({
     data: () => ({
         author: '',
         content: '',
+        editorOptions: {
+            theme: 'snow'
+        },
         sendable: false,
         title: ''
     }),
@@ -140,4 +155,28 @@ export default ArticleEditor
 </script>
 
 <style scoped>
+.author {
+    margin: 8px;
+}
+.button {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 8px;
+    min-width: 100px;
+    padding: 16px;
+}
+.label {
+    font-size: 20px;
+}
+.navigation {
+    align-items: center;
+    justify-content: left;
+    display: flex;
+}
+.text-input {
+    font-size: 20px;
+}
+.title {
+    margin: 8px;
+}
 </style>
