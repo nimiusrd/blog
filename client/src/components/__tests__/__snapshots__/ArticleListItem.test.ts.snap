@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render 1`] = `
+"<li class=\\"item\\"><div class=\\"title\\">
+        title
+    </div> <div class=\\"author\\">
+        author
+    </div> <div class=\\"posted-at\\">
+        Sat Sep 28 2019
+    </div> <div class=\\"updated-at\\">
+        Sun Sep 29 2019
+    </div></li>"
+`;
