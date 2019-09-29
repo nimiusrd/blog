@@ -84,7 +84,7 @@ class Article
 
   public function getUpdatedAt()
   {
-    return $this->postedAt;
+    return $this->updatedAt;
   }
 
   public function setUpdatedAt($updatedAt)
