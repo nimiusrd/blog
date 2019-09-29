@@ -10,10 +10,22 @@
 - 投稿された記事はDocker上のMySQLで管理する
 
 ## 環境
-### サーバーサイド
+### バックエンド
 PHP 7.2 <=
 Symfony 3.4
 
 ### フロントエンド
 Vue
 Webpack
+
+## ビルド
+### バックエンド
+
+
+### フロントエンド
+```bash
+cd client
+yarn
+yarn build:production
+```
+バンドルされたものは`web/bundle.js`
