@@ -1,4 +1,9 @@
 module.exports = {
+    globals: {
+        'vue-jest': {
+            babelConfig: false
+        }
+    },
     moduleFileExtensions: ["js", "json", "vue", "ts"],
     transform: {
         "^.+\\.vue$": "vue-jest",

@@ -2,7 +2,7 @@ import ArticleListItem from '@/components/ArticleListItem.vue'
 import {shallowMount} from '@vue/test-utils'
 
 test('snapshot', () => {
-    const wrapper = shallowMount<ArticleListItem>(ArticleListItem, {
+    const wrapper = shallowMount(ArticleListItem, {
         propsData: {
             author: 'author',
             id: 1,

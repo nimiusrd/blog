@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+"<div class=\\"navigation\\"><button class=\\"button edit\\">
+        Edit
+    </button> <button class=\\"button home\\">
+        Home
+    </button> <button class=\\"button delete\\">
+        Delete
+    </button></div>"
+`;
