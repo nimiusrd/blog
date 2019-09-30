@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+"<div class=\\"article\\"><div class=\\"author\\">
+        author: author
+    </div> <div class=\\"posted-at\\">
+        posted at Sat Sep 28 2019
+    </div> <div class=\\"updated-at\\">
+        updated at Sat Sep 28 2019
+    </div> <div class=\\"title\\">
+        title
+    </div> <div class=\\"content ql-editor\\">content</div></div>"
+`;

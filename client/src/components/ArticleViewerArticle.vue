@@ -4,10 +4,10 @@
             author: {{ author }}
         </div>
         <div class="posted-at">
-            posted at {{ postedAt }}
+            posted at {{ formattedPostedAt }}
         </div>
         <div class="updated-at">
-            updated at {{ updatedAt }}
+            updated at {{ formattedUpdatedAt }}
         </div>
         <div class="title">
             {{ title }}
@@ -20,6 +20,14 @@
 import Vue from 'vue'
 
 const ArticleViewerArticle = Vue.extend({
+    computed: {
+        formattedPostedAt: function() {
+            return new Date(this.postedAt).toDateString()
+        },
+        formattedUpdatedAt: function() {
+            return new Date(this.updatedAt).toDateString()
+        }
+    },
     created() {
         this.getArticle()
     },
