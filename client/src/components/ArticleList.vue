@@ -13,7 +13,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import ArticleListHeader from './ArticleListHeader.vue'
 import ArticleListItem from './ArticleListItem.vue'
 import Vue from 'vue'

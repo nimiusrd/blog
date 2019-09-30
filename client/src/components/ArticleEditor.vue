@@ -43,7 +43,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 import {VueEditor} from 'vue2-editor'
 import fetch from 'node-fetch'

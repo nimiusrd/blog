@@ -5,7 +5,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import ArticleList from './ArticleList.vue'
 import HomeNavigation from './HomeNavigation.vue'
 import Vue from 'vue'

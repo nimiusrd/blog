@@ -12,7 +12,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 
 const ArticleViewerNavigation = Vue.extend({

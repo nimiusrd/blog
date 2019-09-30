@@ -5,7 +5,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import ArticleViewerArticle from './ArticleViewerArticle.vue'
 import ArticleViewerNavigation from './ArticleViewerNavigation.vue'
 import Vue from 'vue'

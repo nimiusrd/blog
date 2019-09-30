@@ -15,7 +15,7 @@
     </li>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 
 const ArticleListItem = Vue.extend({
