@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `"<div class=\\"list\\"><articlelistheader-stub></articlelistheader-stub> <articlelistitem-stub author=\\"author\\" postedat=\\"2019-09-28T06:34:56+00:00\\" title=\\"title\\" updatedat=\\"2019-09-28T06:34:56+00:00\\"></articlelistitem-stub></div>"`;
