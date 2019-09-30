@@ -17,9 +17,9 @@ class ArticleController extends FOSRestController
     /**
      * @Route("/api/articles", methods={"GET"}, name="get_articles")
      */
-    public function getArticleList(LoggerInterface $logger)
+    public function getArticleList(EntityManagerInterface $entityManager)
     {
-        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+        $articles = $entityManager->getRepository(Article::class)->findAll();
 
         if (!$articles) {
             return $this->json([]);
@@ -40,11 +40,9 @@ class ArticleController extends FOSRestController
     /**
      * @Route("/api/articles", methods={"POST"}, name="post_article")
      */
-    public function postArticle(Request $request)
+    public function postArticle(EntityManagerInterface $entityManager, Request $request)
     {
         $data = json_decode($request->getContent());
-
-        $entityManager = $this->getDoctrine()->getManager();
 
         $article = new Article();
         $article->setTitle($data->title);
@@ -63,9 +61,9 @@ class ArticleController extends FOSRestController
     /**
      * @Route("/api/articles/{articleId}", methods={"GET"}, name="get_article")
      */
-    public function getArticle(int $articleId)
+    public function getArticle(EntityManagerInterface $entityManager, int $articleId)
     {
-        $article = $this->getDoctrine()
+        $article = $entityManager
             ->getRepository(Article::class)
             ->find($articleId);
 
@@ -88,9 +86,8 @@ class ArticleController extends FOSRestController
     /**
      * @Route("/api/articles/{articleId}", methods={"PUT"}, name="update_article")
      */
-    public function updateArticle(int $articleId, Request $request)
+    public function updateArticle(EntityManagerInterface $entityManager, int $articleId, Request $request)
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $article = $entityManager->getRepository(Article::class)->find($articleId);
 
         if (!$article) {
@@ -115,9 +112,8 @@ class ArticleController extends FOSRestController
     /**
      * @Route("/api/articles/{articleId}", methods={"DELETE"}, name="delete_article")
      */
-    public function deleteArticle(int $articleId)
+    public function deleteArticle(EntityManagerInterface $entityManager, int $articleId)
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $article = $entityManager->getRepository(Article::class)->find($articleId);
 
         if ($article) {
